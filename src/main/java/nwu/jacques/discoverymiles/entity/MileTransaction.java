@@ -13,6 +13,9 @@ public class MileTransaction {
     @Column(name = "value", nullable = false)
     private double value;
 
+    @Column(name = "runningBalance", nullable = false)
+    private double runningBalance;
+
     @Column(name = "date", nullable = false)
     private Date date;
 
@@ -22,11 +25,12 @@ public class MileTransaction {
     public MileTransaction() {
     }
 
-    public MileTransaction(long id, double value, Date date, User user) {
+    public MileTransaction(long id, double value, Date date, User user, double runningBalance) {
         this.id = id;
         this.value = value;
         this.date = date;
         this.user = user;
+        this.runningBalance = runningBalance;
     }
 
     public long getId() {
@@ -44,4 +48,11 @@ public class MileTransaction {
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
+
+    public double getRunningBalance() {
+        return runningBalance;
+    }
+    public void setRunningBalance(double runningBalance) {
+        this.runningBalance = runningBalance;
+    }
 }
