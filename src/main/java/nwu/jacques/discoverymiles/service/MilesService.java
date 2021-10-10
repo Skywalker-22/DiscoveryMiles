@@ -4,19 +4,14 @@ import nwu.jacques.discoverymiles.entity.MileTransaction;
 import nwu.jacques.discoverymiles.entity.User;
 import nwu.jacques.discoverymiles.exception.ResourceNotFoundException;
 import nwu.jacques.discoverymiles.model.UserMilesModel;
-import nwu.jacques.discoverymiles.repository.MileTransactionRepository;
 import nwu.jacques.discoverymiles.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.Date;
 
 @Component
 public class MilesService {
-    @Autowired
-    private MileTransactionRepository mileTransactionRepository;
-
     @Autowired
     private UserRepository userRepository;
 
