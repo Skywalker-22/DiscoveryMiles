@@ -32,7 +32,7 @@ public class MilesService {
         return new UserMilesModel(user.getMiles(), lastTransactionDate, user.getUsername());
     }
 
-    public void addSubtractMiles(Long userId, double miles) throws ResourceNotFoundException {
+    public void addSubtractMiles(Long userId, double miles, Date date) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for id : " + userId));
 
@@ -42,7 +42,12 @@ public class MilesService {
         newTransaction.setUser(user);
         newTransaction.setValue(miles);
         newTransaction.setRunningBalance(newBalance);
-        newTransaction.setDate(new Date());
+
+        if (date == null) {
+            newTransaction.setDate(new Date());
+        } else {
+            newTransaction.setDate(date);
+        }
 
         user.setMiles(newBalance);
         user.addMileTransaction(newTransaction);

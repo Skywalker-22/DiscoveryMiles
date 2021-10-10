@@ -24,13 +24,13 @@ public class MilesController {
 
     @PostMapping("{id}/add")
     public ResponseEntity addMiles(@PathVariable(value = "id") long userId, @Valid @RequestBody MileTransactionUpdateModel model) throws ResourceNotFoundException {
-        milesService.addSubtractMiles(userId, model.getValue());
+        milesService.addSubtractMiles(userId, model.getValue(), model.getTransactionDate());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("{id}/subtract")
     public ResponseEntity subtractMiles(@PathVariable(value = "id") long userId, @Valid @RequestBody MileTransactionUpdateModel model) throws ResourceNotFoundException {
-        milesService.addSubtractMiles(userId, model.getValue() * -1);
+        milesService.addSubtractMiles(userId, model.getValue() * -1, model.getTransactionDate());
         return ResponseEntity.ok().build();
     }
 }
